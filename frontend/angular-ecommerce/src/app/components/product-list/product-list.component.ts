@@ -6,9 +6,9 @@ import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-product-list-component',
   templateUrl: './product-list-grid.component.html',
-  styleUrls: ['./product-list-component.component.css']
+  styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponentComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
 
   products!: Product[];
@@ -25,8 +25,6 @@ export class ProductListComponentComponent implements OnInit {
       this.listProducts();
     })
   }
-
-  
 
   listProducts() {
     this.searchMode=this.router.snapshot.paramMap.has('keyword');
@@ -54,6 +52,7 @@ export class ProductListComponentComponent implements OnInit {
       this.currentCategoryName = 'Books';
     }
     this.productService.getProductList(this.currentCategoryId).subscribe(data => this.products = data);
+    console.log(this.products)
   }
   
 

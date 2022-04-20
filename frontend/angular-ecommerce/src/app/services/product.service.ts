@@ -8,9 +8,6 @@ import { Product } from '../common/product';
   providedIn: 'root'
 })
 export class ProductService {
-  
-
-  
 
   private baseUrl:string = "http://localhost:8080/api/products"; 
 
@@ -34,7 +31,7 @@ export class ProductService {
 
   searchProducts(theKeyword: string) {
     
-    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
+    const searchUrl:string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
 
     return this.getProducts(searchUrl)
   }
@@ -44,6 +41,12 @@ export class ProductService {
       map(response => response._embedded.products)
     );
   }
+
+  getProduct(productId: number): Observable<Product> {
+    const productUrl:string = `${this.baseUrl}/${productId}`;
+    return this.httpClient.get<Product>(productUrl);
+  }
+  
 
 }
 

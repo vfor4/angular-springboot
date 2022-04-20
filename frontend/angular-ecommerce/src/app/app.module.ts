@@ -2,18 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ProductListComponentComponent } from './components/product-list-component/product-list-component.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http'
 import { ProductService } from './services/product.service';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 const routers: Routes = [
-  { path: 'search/:keyword', component: ProductListComponentComponent },
-  { path: 'category/:id/:name', component: ProductListComponentComponent },
-  { path: 'category', component: ProductListComponentComponent },
-  { path: 'products', component: ProductListComponentComponent },
+  { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'search/:keyword', component: ProductListComponent },
+  { path: 'category/:id/:name', component: ProductListComponent },
+  { path: 'category', component: ProductListComponent },
+  { path: 'products', component: ProductListComponent },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full'  },
 ]
@@ -21,9 +23,10 @@ const routers: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponentComponent,
+    ProductListComponent,
     ProductCategoryMenuComponent,
-    SearchComponent
+    SearchComponent,
+    ProductDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(routers),
