@@ -1,4 +1,4 @@
-import { ProducCategory } from './produc-category';
+import { ProducCategory } from './product-category';
 
 describe('ProducCategory', () => {
   it('should create an instance', () => {

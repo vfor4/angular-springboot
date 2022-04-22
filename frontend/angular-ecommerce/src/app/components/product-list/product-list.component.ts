@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem } from 'src/app/common/cart-item';
 import { Product } from 'src/app/common/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import {getResponseProducts} from 'src/app/services/product.service'
 
@@ -24,8 +26,12 @@ export class ProductListComponent implements OnInit {
   theTotalElements: number = 0;
   previousKeyword: string = "";
 
+  // cart status
+ 
+
 
   constructor(private productService: ProductService,
+    private cartService: CartService,
     private router: ActivatedRoute) { }
 
   // such as @PostConstruct
@@ -93,5 +99,15 @@ export class ProductListComponent implements OnInit {
     this.listProducts();
   }
 
+
+  addCart(product: Product){
+    console.log(`name: ${product.name}`);
+    
+    const theCartItem = new CartItem(product);
+
+    this.cartService.addToCart(theCartItem);
+
+
+  }
 
 }
