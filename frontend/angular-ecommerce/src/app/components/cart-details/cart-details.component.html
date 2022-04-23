@@ -23,7 +23,7 @@
                             <td>
                                 <div class="items">
 
-                                    <label for="">Quantity: </label> 
+                                    <label for="">Quantity: </label>
                                     <div class="row  no-gutters">
                                         <div (click)="incrementQuantity(cartItem)" class="col">
                                             <button class="btn btn-primary btn-sm">
@@ -35,7 +35,8 @@
                                         </div>
 
                                         <div class="col">
-                                            <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm">
+                                            <button (click)="decrementQuantity(cartItem)"
+                                                class="btn btn-primary btn-sm">
                                                 <i class="fas fa-minus"></i>
                                             </button>
                                         </div>
@@ -44,9 +45,9 @@
                                     <p class="mt-2">Subtotal:
                                         {{cartItem.quantity * cartItem.unitPrice | currency: 'USD'}}
                                     </p>
-                                        <button (click)="remove(cartItem)" class="btn btn-primary btn-sm">
-                                            Remove
-                                        </button>
+                                    <button (click)="remove(cartItem)" class="btn btn-primary btn-sm">
+                                        Remove
+                                    </button>
                                 </div>
                             </td>
                         </tr>
@@ -56,7 +57,11 @@
                                 <p>Total Quantity: {{totalQuantityValue}}</p>
                                 <p>Shipping: Free</p>
                                 <p>Total Price: {{totalPriceValue | currency: 'USD'}}</p>
+                                <a routerLink="/checkout" class="btn btn-primary btn-sm">
+                                    Checkout
+                                </a>
                             </td>
+                            
                         </tr>
                     </tbody>
                 </table>

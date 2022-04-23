@@ -1,0 +1,223 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="content-fluid">
+            <!-- CUSTOMER -->
+            <form (ngSubmit)="onSubmit()" [formGroup]="checkoutFormGroup">
+                <div formGroupName="customer" class="form-area">
+                    <h3>Customer</h3>
+                    <div class="row">
+                        <div class="col-md-2"><Label>First name: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="firstName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Last name: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+
+                                <input type="text" formControlName="lastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Email: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="email" formControlName="email">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- shipping address-->
+                <div formGroupName="shippingAddress" class="form-area">
+                    <h3>Shipping Address</h3>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Country: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select name="" id="" formControlName="country">
+                                    <option value="">TO DO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Street: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="street">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>City: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="city">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>State: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select name="" id="" formControlName="state">
+                                    <option value=""> TODO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Zip code: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="zipCode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Check box to copy shipping address to billing address-->
+
+                <div class="input-space">
+                    <label class="au-checkbox">
+                        <input type="checkbox" (change)="copy($event)">
+                        <span class="au-checkmark"></span>Billing Address same as Shipping Address
+                    </label>
+                </div>
+
+                <!-- billing address-->
+                <div formGroupName="billingAddress" class="form-area">
+                    <h3>Billing Address</h3>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Country: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select name="" id="" formControlName="country">
+                                    <option value="">TO DO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Street: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="street">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>City: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="city">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>State: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select name="" id="" formControlName="state">
+                                    <option value=""> TODO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Zip code: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="zipCode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit card-->
+                <div formGroupName="creditCard" class="form-area">
+                    <h3>Credit Card</h3>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Card type: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select name="" id="" formControlName="cardType">
+                                    <option value="">MASTER CARD</option>
+                                    <option value="">DEBIT CARD</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Name on card: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="nameOnCard">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Card number: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="cardNumber">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Security code: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="securityCode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Expiration month: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationMonth">
+                                    <option value="">TODO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><Label>Expiration year: </Label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationYear">
+                                    <option value="">TODO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Details-->
+
+                <div class="form-area">
+
+                    <h3>Review Your Order</h3>
+                    <p>Total Quantity: {{totalQuantity}}</p>
+                    <p>Shipping: Free</p>
+                    <p>Total Price: {{totalPrice | currency: 'USD'}}</p>
+                </div>
+
+                <!--Submit button-->
+                <div class="text-center" form>
+                    <button type="submit" class="btn btn-success">
+                        Purchase
+                    </button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
