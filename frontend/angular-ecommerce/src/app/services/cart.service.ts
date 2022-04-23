@@ -50,6 +50,7 @@ export class CartService {
       totalQuantityValue += tempCartItem.quantity;
     }
     
+    
     this.totalPriceValue.next(totalPriceValue);
     this.totalQuantityValue.next(totalQuantityValue);
 
