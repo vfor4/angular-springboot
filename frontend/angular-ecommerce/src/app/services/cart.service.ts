@@ -8,6 +8,7 @@ import { Product } from '../common/product';
 })
 export class CartService {
 
+
   cartItems: CartItem[] = [];
   totalPriceValue: Subject<number> = new Subject<number>();
   totalQuantityValue: Subject<number> = new Subject<number>();
@@ -15,7 +16,7 @@ export class CartService {
   constructor() { }
 
   addToCart(theCartItem: CartItem) {
-    
+
     let alreadyExistsInCart: boolean = false;
     let existingCartItem: CartItem | undefined = undefined;
 
@@ -35,10 +36,10 @@ export class CartService {
     } else {
       this.cartItems.push(theCartItem);
     }
-    
-     //======================================================
+
+    //======================================================
     this.calculateTotalPrice();
-    }
+  }
 
   calculateTotalPrice() {
 
@@ -46,13 +47,33 @@ export class CartService {
     let totalQuantityValue: number = 0;
 
     for (const tempCartItem of this.cartItems) {
-      totalPriceValue += tempCartItem.quantity *tempCartItem.unitPrice;
+      totalPriceValue += tempCartItem.quantity * tempCartItem.unitPrice;
       totalQuantityValue += tempCartItem.quantity;
     }
-    
-    
+
+
     this.totalPriceValue.next(totalPriceValue);
     this.totalQuantityValue.next(totalQuantityValue);
 
   }
+
+  decrementQuantity(cartItem: CartItem) {
+    cartItem.quantity--;
+
+    if (cartItem.quantity == 0) {
+      this.remove(cartItem)
+    }
+
+    this.calculateTotalPrice();
+  }
+
+  remove(cartItem: CartItem) {
+    const cartItemIndex: number = this.cartItems.findIndex(element => element.id = cartItem.id);
+
+    if (cartItemIndex > -1) {
+      this.cartItems.splice(cartItemIndex, 1);
+    }
+    this.calculateTotalPrice();
+  }
+
 }
