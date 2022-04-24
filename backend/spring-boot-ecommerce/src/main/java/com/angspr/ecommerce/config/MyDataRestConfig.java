@@ -1,5 +1,9 @@
 package com.angspr.ecommerce.config;
 
+import com.angspr.ecommerce.entities.Country;
+import com.angspr.ecommerce.entities.Product;
+import com.angspr.ecommerce.entities.ProductCategory;
+import com.angspr.ecommerce.entities.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -29,13 +33,23 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         HttpMethod[] theUnsupportActions = {HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PUT};
 
-        config.getExposureConfiguration()
-                .withItemExposure((metadata, httpMethods)-> httpMethods.disable(theUnsupportActions))
-                .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportActions)));
-//        RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
+        disableHttpMethod(Product.class, config, theUnsupportActions);
+
+        disableHttpMethod(ProductCategory.class, config, theUnsupportActions);
+
+        disableHttpMethod(Country.class, config, theUnsupportActions);
+
+        disableHttpMethod(State.class, config, theUnsupportActions);
 
         // call an internal helper method
         exposeIds(config);
+    }
+
+    private void disableHttpMethod(Class theClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportActions) {
+        config.getExposureConfiguration()
+                .forDomainType(theClass)
+                .withItemExposure((metadata, httpMethods)-> httpMethods.disable(theUnsupportActions))
+                .withCollectionExposure(((metadata, httpMethods) -> httpMethods.disable(theUnsupportActions)));
     }
 
     private void exposeIds(RepositoryRestConfiguration config) {
